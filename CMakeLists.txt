@@ -21,7 +21,7 @@ if (WIN32)
 	include_directories(
 		Core/DLLoader/Windows/
 	)
-
+add_compile_definitions(_HAS_STD_BYTE=0)
 endif(WIN32)
 
 if(UNIX)
@@ -38,6 +38,7 @@ if(UNIX)
 endif(UNIX)
 
 include_directories(
+    Core/header/
 	Core/DLLoader/
 	API/
 )
@@ -45,6 +46,8 @@ include_directories(
 add_executable(Use-Shared-Core
 	${DLLOADER_SRC}
 	Core/main.cpp
+	Core/cpp/EnvVariablesImporter.cpp
+    Core/cpp/Logger.cpp
 )
 
 target_link_libraries(Use-Shared-Core ${CMAKE_DL_LIBS})    	# Линковка программы с библиотеками  CMAKE_DL_LIBS ${CMAKE_DL_LIBS} So, for any target that links with a library that uses dlopen

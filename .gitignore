@@ -20,6 +20,7 @@
 x64/
 x86/
 out/
+config/
 bld/
 [Bb]in/
 [Oo]bj/
